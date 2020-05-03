@@ -15,11 +15,13 @@ un equipo tipo Cahuane FR-300
 ## Diagrama esquemático completo
 El diagrama eléctrico completo se muestra a continuación. Mas adelante se
 detalla cada sección por separado para mejor interpretación
+
 [![Diagrama eléctrico](assets/dds_esquema_electrico.png)](assets/dds_esquema_electrico.png)
 
 ## Pinout del Arduino Nano
 Es importante familiarizarse con la notación de los pines del Arduino Nano. De
 esta manera será mas sencillo seguir la guía de ensamble
+
 ![Arduino Nano](assets/arduino_nano_pinout.png "Arduino Nano")
 
 ## Fuente de alimentación
@@ -31,6 +33,7 @@ cualquier tipo de ruido que pueda traer problemas a la electrónica sensible.
 El DDS utiliza la llave selectora de canales del equipo para cambiar entre las
 diferentes bandas. La llave rotativa tiene una isla completa vacía que puede
 utilizarse para este fin
+
 ![Llave selectora](assets/llave_selectora_canales.png "Llave selectora")
 
 Cada pin de la llave selectora es conectada al Arduino Nano. Si no sabe que
@@ -43,6 +46,7 @@ una señal digital del tipo tren de pulsos. El Arduino interpreta esa informaci�
 y el código permite ajustar la frecuencia. También posee un botón que tiene
 diferentes usos dependiendo de la forma en que se toque. Para mas información al
 respecto, leer la sección [operación](#operaci%c3%b3n).
+
 ![Encoder rotativo](assets/rotary_pinout.png "Encoder rotativo")
 
 ## Pantalla LCD
@@ -55,6 +59,7 @@ hace a través de los pines `LED+` y `LED-`. Se puede colocar una resistencia de
 pequeño valor si el nivel de luz es demasiado fuerte. Exceptuando la
 alimentación por los pines `VSS` y `VCC`, el resto de los pines se conectan
 directamente al Arduino.
+
 ![Pinout LCD](assets/lcd_pinout.png "Pinout LCD")
 
 ## DDS AD9850
