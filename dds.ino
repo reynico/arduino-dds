@@ -18,7 +18,7 @@
    Si DEBUG está definido, entonces se muestran los mensajes
    por el monitor serie.
 */
-#define DEBUG
+//#define DEBUG
 
 // Pantalla LCD
 LiquidCrystal lcd(12, 13, 7, 6, 5, 4);
