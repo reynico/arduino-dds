@@ -7,10 +7,10 @@
   - [Pantalla LCD](#pantalla-lcd)
   - [DDS AD9850](#dds-ad9850)
   - [Radiofrecuencia](#radiofrecuencia)
-- [Operación](#operaci%c3%b3n)
 - [Instalación del código en el Arduino Nano](#instalaci%c3%b3n-del-c%c3%b3digo-en-el-arduino-nano)
   - [Subir el código](#subir-el-c%c3%b3digo)
   - [Configuraciones posibles](#configuraciones-posibles)
+- [Operación](#operaci%c3%b3n)
 # Reformas
 Se muestran una serie de reformas y ajustes necesarios para instalar el DDS en
 un equipo tipo Cahuane FR-300
@@ -72,21 +72,6 @@ Informaciíon de como conectar el AD9850 al Arduino
 ## Radiofrecuencia
 Información de como conectar el DDS al equipo en su parte de radiofrecuencia
 
-
-# Operación
-
-La operación se realiza con dos controles: el selector de banda original (se
-utiliza una isla vacía) y un encoder rotativo con botón. El encoder cumple la
-función de VFO, sintonizando la frecuencia, y el botón incluído en él tiene
-diferentes funciones dependiendo de los toques. Un toque corto cambia el step o
-incremento entre 10 Hz, 100 Hz, 1 KHz, 10 KHz, 100 KHz y 1 MHz de manera
-ascendente. Dos toques cortos hacen lo mismo de manera descendente. Un toque
-largo (+2 segundos) intercambia entre los modos LSB y USB.
-
-![Operacion](assets/frente_cahuane.png "Operacion")
-
-
-
 # Instalación del código en el Arduino Nano
 Una vez clonado este repositorio, abrir el archivo `dds.ino` en Arduino. Todas
 las librerías necesarias están incluidas en el repositorio, de esta manera no
@@ -109,3 +94,15 @@ software Arduino
   modificar la configuración de los pines en el archivo correspondiente al
   módulo que se desea modificar. En caso de querer cambiar los pines del DDS,
   entonces se debe editar en el archivo [ad9850.h](https://github.com/reynico/arduino-dds/blob/master/ad9850.h)
+
+# Operación
+
+La operación se realiza con dos controles: el selector de banda original (se
+utiliza una isla vacía) y un encoder rotativo con botón. El encoder cumple la
+función de VFO, sintonizando la frecuencia, y el botón incluído en él tiene
+diferentes funciones dependiendo de los toques. Un toque corto cambia el step o
+incremento entre 10 Hz, 100 Hz, 1 KHz, 10 KHz, 100 KHz y 1 MHz de manera
+ascendente. Dos toques cortos hacen lo mismo de manera descendente. Un toque
+largo (+2 segundos) intercambia entre los modos LSB y USB.
+
+![Operacion](assets/frente_cahuane.png "Operacion")
