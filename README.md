@@ -9,6 +9,7 @@
   - [Radiofrecuencia](#radiofrecuencia)
 - [Operación](#operaci%c3%b3n)
 - [Instalación del código en el Arduino Nano](#instalaci%c3%b3n-del-c%c3%b3digo-en-el-arduino-nano)
+  - [Subir el código](#subir-el-c%c3%b3digo)
   - [Configuraciones posibles](#configuraciones-posibles)
 # Reformas
 Se muestran una serie de reformas y ajustes necesarios para instalar el DDS en
@@ -94,6 +95,10 @@ librería. El código se encuentra comentado para que sea mas sencilla su revisi
 y modificación
 
 ![Código Arduino](assets/codigo_arduino.png "Código Arduino")
+
+## Subir el código
+Con el Arduino Nano conectado a un puerto USB, presionar el botón `Upload` en el
+software Arduino
 
 ## Configuraciones posibles
 * **Modo debug:** El modo debug se utiliza en caso de que algo del funcionamiento
