@@ -8,6 +8,8 @@
   - [DDS AD9850](#dds-ad9850)
   - [Radiofrecuencia](#radiofrecuencia)
 - [Operación](#operaci%c3%b3n)
+- [Instalación del código en el Arduino Nano](#instalaci%c3%b3n-del-c%c3%b3digo-en-el-arduino-nano)
+  - [Configuraciones posibles](#configuraciones-posibles)
 # Reformas
 Se muestran una serie de reformas y ajustes necesarios para instalar el DDS en
 un equipo tipo Cahuane FR-300
@@ -82,3 +84,23 @@ largo (+2 segundos) intercambia entre los modos LSB y USB.
 
 ![Operacion](assets/frente_cahuane.png "Operacion")
 
+
+
+# Instalación del código en el Arduino Nano
+Una vez clonado este repositorio, abrir el archivo `dds.ino` en Arduino. Todas
+las librerías necesarias están incluidas en el repositorio, de esta manera no
+hay que tomarse el trabajo extra de instalar versiones especificas de cada
+librería. El código se encuentra comentado para que sea mas sencilla su revisión
+y modificación
+
+![Código Arduino](assets/codigo_arduino.png "Código Arduino")
+
+## Configuraciones posibles
+* **Modo debug:** El modo debug se utiliza en caso de que algo del funcionamiento
+  del DDS no esté ocurriendo como es deseado. Para poder encontrar el problema
+  es de utilidad activar los mensajes de depuración. Para esto, descomentar la
+  [línea 21](https://github.com/reynico/arduino-dds/blob/master/dds.ino#L21)
+* **Pinout:** Se puede variar el pinout de cada parte. Para ello es necesario
+  modificar la configuración de los pines en el archivo correspondiente al
+  módulo que se desea modificar. En caso de querer cambiar los pines del DDS,
+  entonces se debe editar en el archivo [ad9850.h](https://github.com/reynico/arduino-dds/blob/master/ad9850.h)
