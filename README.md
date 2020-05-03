@@ -66,7 +66,12 @@ directamente al Arduino.
 ![Pinout LCD](assets/lcd_pinout.png "Pinout LCD")
 
 ## DDS AD9850
-Informaciíon de como conectar el AD9850 al Arduino
+La conexión al DDS es bastante sencilla. Se necesita alimentación de +5v y masa,
+y cuatro pines de control, `W_CLK`, `FQ_UD`, `DATA` y `RESET`. La salida de
+antena debe ir conectada conforme se indica en la sección [Radiofrecuencia](#radiofrecuencia).
+
+![Pinout DDS](assets/dds_pinout.png "Pinout DDS")
+
 
 
 ## Radiofrecuencia
