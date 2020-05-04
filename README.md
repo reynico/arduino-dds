@@ -104,7 +104,10 @@ filtrada con una resistencia `R4` y un capacitor a masa `C4`.
 
 ## Radiofrecuencia
 Se utiliza la salida `SINB` del DDS a través de un capacitor de 100nF para
-alimentar la placa PL154 a través de la llave selectora de bandas original.
+alimentar la placa PL154 mediante la llave selectora de bandas original.
+
+![Salida DDS](assets/dds_out.png "Salida DDS")
+
 
 # Instalación del código en el Arduino Nano
 Una vez clonado este repositorio, abrir el archivo `dds.ino` en Arduino. Todas
