@@ -1,3 +1,7 @@
+Se muestran una serie de reformas y ajustes necesarios para instalar el DDS en
+un equipo tipo Cahuane FR-300. Al final del documento encontrarán la forma de
+operar el DDS.
+
 - [Reformas](#reformas)
   - [Diagrama esquemático completo](#diagrama-esquem%c3%a1tico-completo)
   - [Pinout del Arduino Nano](#pinout-del-arduino-nano)
@@ -6,14 +10,19 @@
   - [Ajuste de frecuencia por encoder rotativo](#ajuste-de-frecuencia-por-encoder-rotativo)
   - [Pantalla LCD](#pantalla-lcd)
   - [DDS AD9850](#dds-ad9850)
+  - [S-Meter](#s-meter)
   - [Radiofrecuencia](#radiofrecuencia)
 - [Instalación del código en el Arduino Nano](#instalaci%c3%b3n-del-c%c3%b3digo-en-el-arduino-nano)
   - [Subir el código](#subir-el-c%c3%b3digo)
   - [Configuraciones posibles](#configuraciones-posibles)
 - [Operación](#operaci%c3%b3n)
+  - [VFO](#vfo)
+  - [Saltos de incremento](#saltos-de-incremento)
+  - [Bandas](#bandas)
+  - [Modo de operación (LSB y USB)](#modo-de-operaci%c3%b3n-lsb-y-usb)
+  - [Memoria VFO](#memoria-vfo)
+
 # Reformas
-Se muestran una serie de reformas y ajustes necesarios para instalar el DDS en
-un equipo tipo Cahuane FR-300
 
 ## Diagrama esquemático completo
 El diagrama eléctrico completo se muestra a continuación. Mas adelante se
@@ -36,6 +45,9 @@ cualquier tipo de ruido que pueda traer problemas a la electrónica sensible.
 El DDS utiliza la llave selectora de canales del equipo para cambiar entre las
 diferentes bandas. La llave rotativa tiene una isla completa vacía que puede
 utilizarse para este fin
+
+Existe una isla vacía en la llave selectora original, que es la que utilizaremos
+para el Arduino de la siguiente manera:
 
 ![Llave selectora](assets/llave_selectora_canales.png "Llave selectora")
 
@@ -72,10 +84,27 @@ antena debe ir conectada conforme se indica en la sección [Radiofrecuencia](#ra
 
 ![Pinout DDS](assets/dds_pinout.png "Pinout DDS")
 
+## S-Meter
+El S-Meter funciona tanto en transmisión como en recepción. Para el modo de
+transmisión se utiliza la tensión existente en el led rojo de TX del equipo
+
+![Cahuane led TX](assets/cahuane_led_tx.png "Cahuane led TX")
+
+La señal es acondicionada a través de un diodo `D1` y un divisor resistivo
+conformado por `R2` y `R3` y un capacitor a masa. La tensión resultante es
+ingresada a través del pin `Analog 5` (A5) del Arduino Nano.
+
+![S-Meter TX](assets/smeter_pinout.png "S-Meter TX")
+
+Para la recepción se utiliza la señal del AGC del equipo que es posteriormente
+filtrada con una resistencia `R4` y un capacitor a masa `C4`.
+
+![Cahuane AGC](assets/agc_pin.jpg "Cahuane AGC")
 
 
 ## Radiofrecuencia
-Información de como conectar el DDS al equipo en su parte de radiofrecuencia
+Se utiliza la salida `SINB` del DDS a través de un capacitor de 100nF para
+alimentar la placa PL154 a través de la llave selectora de bandas original.
 
 # Instalación del código en el Arduino Nano
 Una vez clonado este repositorio, abrir el archivo `dds.ino` en Arduino. Todas
@@ -111,3 +140,33 @@ ascendente. Dos toques cortos hacen lo mismo de manera descendente. Un toque
 largo (+2 segundos) intercambia entre los modos LSB y USB.
 
 ![Operacion](assets/frente_cahuane.png "Operacion")
+
+
+## VFO
+El VFO está programado para funcionar entre 1 a 30 MHz. Girando el encoder
+rotativo se ajusta la frecuencia deseada y es mostrada en tiempo real en la
+primer línea de la pantalla.
+
+## Saltos de incremento
+El botón del encoder cumple la función de posicionar diferentes niveles de
+incremento. Con un toque corto el salto aumenta, con dos toques cortos disminuye
+como en la siguiente figura:
+
+![Saltos de incremento](assets/incremento_decremento.png "Saltos de incremento")
+
+El salto de frecuencia es indicado por un segundo en la pantalla, reemplazando
+a la frecuencia del VFO por ese período.
+
+## Bandas
+Las bandas se activan con la perilla selectora de bandas original. El código
+está programado para tener tres bandas: 20, 40 y 60 metros. Esto es modificable
+
+## Modo de operación (LSB y USB)
+Si bien cada banda tiene preconfigurado su modo de operación, el modo se puede
+invalidar con un pulso largo en el botón de [VFO](#vfo). Ésto cicla los modos
+entre USB y LSB y es indicado en la esquina superior izquierda de la pantalla.
+
+## Memoria VFO
+El código contempla el uso de la memoria EEPROM del Arduino Nano para guardar la
+última frecuencia elegida en el VFO. El guardado en memoria se realiza luego de
+dos segundos de inactividad en el encoder rotativo.
